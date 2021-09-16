@@ -35,10 +35,11 @@ public class controller {
     }
      */
 
-    @PostMapping(value = "/createpet", consumes = "application/json")
-    public void createPet(@RequestBody Pet pet)
+    @PostMapping(value = "/createpet", consumes = "application/json", produces="application/json")
+    public Pet createPet(@RequestBody Pet pet)
     {
         petModel.add(pet, newId.getAndIncrement());
+        return petModel.getFromList(1);
     }
 
     @GetMapping(value = "/getall", produces = "application/json")
@@ -47,11 +48,7 @@ public class controller {
         return petModel.getAll();
     }
 
-    /*
-    {
-        "id": 3
-    }
-     */
+
 
    @GetMapping(value ="/getpet", consumes="application/json", produces= "application/json")
     public Pet getPet(@RequestBody Map<String, Integer> id)
