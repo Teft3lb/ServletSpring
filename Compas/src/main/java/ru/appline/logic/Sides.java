@@ -1,22 +1,46 @@
 package ru.appline.logic;
 
+import java.util.List;
+
 public class Sides {
-        private String Sidedirection;
-        private String degree;
 
-    public Sides(String sidedirection, String degree) {
-        this.Sidedirection = sidedirection;
-        this.degree = degree;
+    private String name;
+
+    public Sides (){super();}
+
+    public Sides(String name) {
+        this.name = name;
     }
 
-    public Sides() {
+    public String getName() {
+        return name;
     }
 
-    public String getSidedirection() {
-        return Sidedirection;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public void setSidedirection(String sidedirection) {
-        Sidedirection = sidedirection;
-    }
+    //    private String North;
+//
+//    private String degree;
+//
+//    public Sides(String name, String degree) {
+//        this.North = name;
+//        this.degree = degree;
+//    }
+//
+//    public String getName() {
+//        return North;
+//    }
+//
+//    public void setName(String name) {
+//        this.North = name;
+//    }
+//
+//    public String getDegree() {
+//        return degree;
+//    }
+//
+//    public void setDegree(String degree) {
+//        this.degree = degree;
+//    }
 }

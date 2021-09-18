@@ -1,45 +1,53 @@
 package ru.appline.logic;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CompasModel implements Serializable {
-  private static final CompasModel instance = new CompasModel();
-
-  private String buffer;
-  ArrayList degrees = new ArrayList();
-  public void add(String buf){ buffer = buf;
-      String ranges[] = buf.split("-");
-        try {
-          for(String s : ranges)
-          {
-            if(s.indexOf('-') == -1)
-            {
-              degrees.add(Integer.parseInt(s));
-            }else {
-              String borders[] = buf.split("-");
-              for (int i = Integer.parseInt(borders[0]); i <= Integer.parseInt(borders[1]); i++){
-                degrees.add(i);
-                  }
-          }
-        }}catch (NumberFormatException e)
-        {
-          System.err.println("Incorrect type");
-        }
+ private static final CompasModel instance = new CompasModel();
 
 
-  ;}
+    private final Map<Sides,Integer> model;
 
-//  public void parser()
-  public static CompasModel getInstance() {
-    return instance;
-  }
+    public static CompasModel getInstance() {
+        return instance;
+    }
+    public CompasModel(){model=new HashMap<Sides, Integer>();}
 
-  public ArrayList getall()
-  {
-    return  degrees;
-  }
-  public String get(){
-    return buffer;
-  }
+    public void add(Sides side,Integer degree)
+    {
+        model.put(side, degree);
+    }
+
+    public Map<Sides, Integer> getFromList()
+    {
+        return model;
+    }
+
+    public int getOne(int id)
+    {
+        return model.get(id);
+    }
+
+// private final Map<Sides,String> model;
+//
+//    public static CompasModel getInstance() {
+//        return instance;
+//    }
+//    public CompasModel(){model=new HashMap<Sides, String>();}
+//
+//    public void add(Sides side,String degree)
+//    {
+//        model.put(side, degree);
+//    }
+//
+//    public Map<Sides, String> getFromList()
+//    {
+//        return model;
+//    }
+
 }
